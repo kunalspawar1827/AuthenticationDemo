@@ -1,0 +1,106 @@
+﻿@model AuthenticationDemo.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        body {
+            background-color: #000; /* Black background */
+            color: #fff; /* White text color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Full viewport height */
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: #000; /* Black background for the container */
+            color: #fff; /* White text color */
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px; /* Set a max-width for the container */
+            border: 1px solid white;
+        }
+
+        .card-body {
+            background-color: #000; /* Ensure the card body matches the container background */
+        }
+
+        .form-control {
+            background-color: #333; /* Dark background for form controls */
+            border: 1px solid #444; /* Slightly lighter border */
+            color: #fff; /* White text */
+        }
+
+            .form-control::placeholder {
+                color: #bbb; /* Lighter color for placeholders */
+            }
+
+        .btn-primary {
+            background-color: lightpink; /* Primary button color */
+            border-color: lightpink; /* Button border color */
+            color:black;
+        }
+
+            .btn-primary:hover {
+                background-color: indianred; /* Darker blue on hover */
+                border-color: indianred ; /* Darker blue border on hover */
+                color: black;
+            }
+
+        .form-label {
+            color: #fff; /* White color for labels */
+        }
+
+        .text-danger {
+            color: #f00; /* Red color for validation messages */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        @using (Html.BeginForm("Login", "Authenticate", FormMethod.Post, new { @class = "container" }))
+        {
+            <div class="row">
+                <div class="col-12">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="card-title text-center mb-4">LOGIN</h3>
+                            <div class="form-group mb-3">
+                                @Html.LabelFor(m => m.UserName, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Username" })
+                                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group mb-3">
+                                @Html.LabelFor(m => m.Password, new { @class = "form-label" })
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Login</button>
+                            <div class="text-center mt-3">
+                                <a href="/
+                                   
+                                   Authenticate/ForgePassword" class="text-light">Forgot Password?</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <!-- Bootstrap JS Bundle (includes Popper) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js" integrity="sha384-4jM6EmkQGfjVwH2V/GvlmE2HT60FZG2PswkWx0l5VeG4T2f1fBz+JKVhTGxv68kj" crossorigin="anonymous"></script>
+</body>
+</html>
