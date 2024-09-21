@@ -52,7 +52,7 @@ namespace AuthenticationDemo.DAL
             string userEmail = "";
             try
             {
-                using(SqlConnection con = new SqlConnection(username))
+                using(SqlConnection con = new SqlConnection(connectionstring))
                 {
                     con.Open();
                     SqlCommand cmd = new SqlCommand($"select Email from  [Production1].[dbo].[UserLogin] where username =  '{username}'", con);
@@ -64,6 +64,30 @@ namespace AuthenticationDemo.DAL
             {
                 return ex.Message;
             }
+        }
+
+
+        public bool ResetPass(string newpass , string username) 
+        {
+            bool isReset = false;
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionstring))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand($"Update UserLogin set password = '{newpass} 'Where Username = '{username}'", con);
+                    int res = Convert.ToInt32(cmd.ExecuteScalar());
+                    if (res == 0)
+                    {
+                        isReset = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                isReset = false;
+            }
+            return isReset;
         }
 
     }
