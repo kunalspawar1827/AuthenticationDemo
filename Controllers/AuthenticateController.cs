@@ -57,7 +57,9 @@ namespace AuthenticationDemo.Controllers
         {
             try
             {
-                int otp = 4245;
+                Random r = new Random();
+
+                int otp = r.Next(1000 , 9999);
                 var userEmail = authenticateDAL.GetUserEmail(username);
 
                 MailMessage mailMessage = new MailMessage();

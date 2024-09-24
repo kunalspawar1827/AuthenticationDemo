@@ -14,7 +14,7 @@ namespace AuthenticationDemo.DAL
         string connectionstring = ConfigurationManager.ConnectionStrings["constr"].ToString();
         public bool IsValidUser(User user)
         {
-            bool isValid = false;
+            bool isValid = true;
             string checkpass = null;
             try
             {
@@ -33,7 +33,7 @@ namespace AuthenticationDemo.DAL
                             checkpass = dr["password"].ToString();
                         }
                     }
-                    if (user.Password == checkpass) 
+                    if (user.Password.ToString() == checkpass.ToString()) 
                     {
                         isValid = true;
                     }
