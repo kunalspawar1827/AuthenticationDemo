@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.UI.WebControls;
 
 namespace AuthenticationDemo.DAL
@@ -36,6 +37,7 @@ namespace AuthenticationDemo.DAL
                     if (user.Password.ToString() == checkpass.ToString()) 
                     {
                         isValid = true;
+                        //test 
                     }
                 }
 
@@ -88,6 +90,11 @@ namespace AuthenticationDemo.DAL
                 isReset = false;
             }
             return isReset;
+        }
+
+        public void New()
+        {
+
         }
 
     }
